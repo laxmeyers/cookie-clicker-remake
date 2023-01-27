@@ -101,9 +101,13 @@ let clickUpgrades = [
     let stats = ''
 
     clickUpgrades.forEach(u => {
+      let disabled = ''
+      if(info[1].total < u.price){
+        disabled = ' disabled'
+      }
         upgrade += `
         <div class="col-12 my-2 d-flex justify-content-between align-items-center fs-4 fw-bold text-warning">
-        <button onclick="addUpgrade('${u.name}')" class="btn btn-success">${u.name} +${u.multiplier}</button>
+        <button onclick="addUpgrade('${u.name}')" class="btn btn-success" ${disabled}>${u.name} +${u.multiplier}</button>
         ${info[1].emoji}${u.price}
          </div>
          `
@@ -127,9 +131,13 @@ let clickUpgrades = [
     let autoStats = ''
 
     automaticUpgrades.forEach(a => {
+      let disabled = ''
+      if(info[1].total < a.price){
+        disabled = ' disabled'
+      }
         auto += `
         <div class="col-12 my-2 d-flex justify-content-between align-items-center fs-4 fw-bold text-warning">
-        <button onclick="addUpgrade('${a.name}')" class="btn btn-success">${a.name} +${a.multiplier}</button>
+        <button onclick="addUpgrade('${a.name}')" class="btn btn-success" ${disabled}>${a.name} +${a.multiplier}</button>
          ${info[1].emoji}${a.price}
          </div>
          `
@@ -153,6 +161,8 @@ let clickUpgrades = [
     currentMoney.total += moneyAdd.total
     eggs += moneyAdd.total 
     drawInfo()
+    drawAuto()
+    drawUpgrades()
   }
 
   function addUpgrade(name){
