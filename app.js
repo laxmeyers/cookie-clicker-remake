@@ -7,7 +7,7 @@ let info = [
     },
     {
         name: 'cash',
-        total: 50000,
+        total: 0,
         emoji: "$"
     },
     {
@@ -21,11 +21,11 @@ let clickUpgrades = [
     {
       name: 'vitamins',
       price: 5,
-      quantity: 0,
+      quantity: 1,
       multiplier: 1
     },
     {
-    name: 'larger eggs',
+      name: 'larger eggs',
       price: 50,
       quantity: 0,
       multiplier: 5
@@ -52,10 +52,22 @@ let clickUpgrades = [
   function drawInfo(){
     let infoElem = document.getElementById('info')
     let template = ''
+    let clickQuantity = 0
+    let autoQuantity = 0
+
+    clickUpgrades.forEach(p => {
+        clickQuantity += (p.quantity * p.multiplier)
+    })
+    info[0].total = clickQuantity
+
+    automaticUpgrades.forEach(p => {
+        autoQuantity += (p.quantity * p.multiplier)
+    })
+    info[2].total = autoQuantity
 
     info.forEach(p => {
         template += `
-        <div class="col-2 bg-primary">${p.emoji}${p.total}</div>
+        <div class="col-2 bg-primary fs-3 rounded-pill">${p.emoji}${p.total}</div>
         `
     })
 
@@ -70,7 +82,7 @@ let clickUpgrades = [
 
     clickUpgrades.forEach(u => {
         upgrade += `
-        <div class="col-12 my-2 d-flex justify-content-between align-items-center">
+        <div class="col-12 my-2 d-flex justify-content-between align-items-center fs-4 fw-bold text-warning">
         <button onclick="addUpgrade('${u.name}')" class="btn btn-success">${u.name} +${u.multiplier}</button>
          $${u.price}
          </div>
@@ -96,7 +108,7 @@ let clickUpgrades = [
 
     automaticUpgrades.forEach(a => {
         auto += `
-        <div class="col-12 my-2 d-flex justify-content-between align-items-center">
+        <div class="col-12 my-2 d-flex justify-content-between align-items-center fs-4 fw-bold text-warning">
         <button onclick="addUpgrade('${a.name}')" class="btn btn-success">${a.name} +${a.multiplier}</button>
          $${a.price}
          </div>
@@ -122,11 +134,45 @@ let clickUpgrades = [
     drawInfo()
   }
 
-  function addUpgrade(array){
-    console.log(array);
+  function addUpgrade(name){
 
-    
+    console.log(name);
+    if (clickUpgrades.find(p => p.name == name)){
+        let update = clickUpgrades.find(p => p.name == name)
+        if (update.price > info[1].total){
+            window.alert(" you don't have enough for that.")
+            return
+        } 
+        update.quantity += 1
+        info[1].total -= update.price
+        update.price += Math.floor(5 * update.quantity)
+        
+        drawUpgrades()
+        drawInfo()
+
+    }else if(automaticUpgrades.find(p => p.name == name)){
+        let update = automaticUpgrades.find(p => p.name == name)
+        if (update.price > info[1].total){
+            window.alert(" you don't have enough for that.")
+            return
+        } 
+        update.quantity += 1
+        info[1].total -= update.price
+        update.price += Math.floor(10 * update.quantity)
+        
+        drawAuto()
+        drawInfo()
+    }
+
   }
+
+  function autoClick(){
+    // console.log('hello')
+    info[1].total += info[2].total
+    drawInfo()
+  }
+
+  setInterval(autoClick, 3000)
 
 
 //   SECTION calling functions

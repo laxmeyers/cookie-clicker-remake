@@ -14,3 +14,11 @@ img:hover{
 .background{
     background-color: #00000075;
 }
+
+.title-background{
+    background-color: rgba(255, 255, 255, 0.63);
+}
+
+.right-border{
+    border: 10px double black;
+}
