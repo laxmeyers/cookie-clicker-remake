@@ -19,7 +19,76 @@
     ></script>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
+  
+    body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+    }
+  
+    body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
+  <body class="debug">
+
+    <head>
+        <div class="container pt-2">
+            <div class="row text-center text-danger">
+                <div class="col-12">
+                    <h1>Note Taker</h1>
+                </div>
+            </div>
+        </div>
+    </head>
+
+    <main>
+        <div class="container text-center">
+            <div class="row text-center text-danger my-">
+                <div class="col-12">
+                    <h1>Gain notes!!!</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 text-center d-flex justify-content-center">
+                    <div class="height"><img src="./[removal.ai]_tmp-63d4124287d45.png" class="img-fluid" alt="Sticky notes"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-2 bg-primary"> click power</div>
+                <div class="col-3 bg-primary"> money total</div>
+                <div class="col-2 bg-primary"> auto clicker power</div>
+            </div>
+            <div class="row bg-primary">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <h6 class="text-center">click Upgrades</h6>
+                            <div class="row" id="click">
+                                <!-- <div class="col-12 my-2"><span><button class="btn btn-success">pen</button> $50</span></div>
+                                <div class="col-12"><span><button class="btn btn-success">pen</button> $50</span></div>
+                                <span><button class="btn btn-success">pen</button> $50</span> -->
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
 
 
     <script src="app.js"></script>
