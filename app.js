@@ -1,4 +1,4 @@
-let clickPower = [
+let click = [
     {
         name: 'click',
         power: 1,
@@ -47,9 +47,9 @@ let clickUpgrades = [
 
     clickUpgrades.forEach(u => {
         upgrade += `
-        <div class="col-12 my-2">
-        <span><button onclick="addClickUpgrade("${u.name}")" class="btn btn-success">${u.name}</button>
-         $${u.price}</span>
+        <div class="col-12 my-2 d-flex justify-content-between align-items-center">
+        <button onclick="addClickUpgrade("${u.name}")" class="btn btn-success">${u.name} +${u.multiplier}</button>
+         $${u.price}
          </div>
          `
 
@@ -73,9 +73,9 @@ let clickUpgrades = [
 
     automaticUpgrades.forEach(a => {
         auto += `
-        <div class="col-12 my-2">
-        <span><button onclick="addClickUpgrade("${a.name}")" class="btn btn-success">${a.name}</button>
-         $${a.price}</span>
+        <div class="col-12 my-2 d-flex justify-content-between align-items-center">
+        <button onclick="addClickUpgrade("${a.name}")" class="btn btn-success">${a.name} +${a.multiplier}</button>
+         $${a.price}
          </div>
          `
 
@@ -89,6 +89,10 @@ let clickUpgrades = [
 
     autoElem.innerHTML = auto
     statsElem.innerHTML = autoStats
+  }
+
+  function clickPower(){
+
   }
 
   drawAuto()
