@@ -1,3 +1,16 @@
+// stretch challeng to make the alert window pop up
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-right',
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true
+})
+
 // SECTION arrays
 let info = [
     {
@@ -8,7 +21,7 @@ let info = [
     {
         name: 'cash',
         total: 0,
-        emoji: "$"
+        emoji: "🥚"
     },
     {
         name: 'auto',
@@ -67,7 +80,7 @@ let clickUpgrades = [
 
     info.forEach(p => {
         template += `
-        <div class="col-2 bg-primary fs-3 rounded-pill">${p.emoji}${p.total}</div>
+        <div class="col-2 bg-primary fs-3 rounded-pill right-border">${p.emoji}${p.total}</div>
         `
     })
 
@@ -84,7 +97,7 @@ let clickUpgrades = [
         upgrade += `
         <div class="col-12 my-2 d-flex justify-content-between align-items-center fs-4 fw-bold text-warning">
         <button onclick="addUpgrade('${u.name}')" class="btn btn-success">${u.name} +${u.multiplier}</button>
-         $${u.price}
+        ${info[1].emoji}${u.price}
          </div>
          `
 
@@ -110,7 +123,7 @@ let clickUpgrades = [
         auto += `
         <div class="col-12 my-2 d-flex justify-content-between align-items-center fs-4 fw-bold text-warning">
         <button onclick="addUpgrade('${a.name}')" class="btn btn-success">${a.name} +${a.multiplier}</button>
-         $${a.price}
+         ${info[1].emoji}${a.price}
          </div>
          `
 
@@ -136,11 +149,11 @@ let clickUpgrades = [
 
   function addUpgrade(name){
 
-    console.log(name);
+    // console.log(name);
     if (clickUpgrades.find(p => p.name == name)){
         let update = clickUpgrades.find(p => p.name == name)
         if (update.price > info[1].total){
-            window.alert(" you don't have enough for that.")
+            Toast.fire({ icon: 'warning', title:`Not enough eggs to buy ${update.name}`})
             return
         } 
         update.quantity += 1
@@ -153,7 +166,7 @@ let clickUpgrades = [
     }else if(automaticUpgrades.find(p => p.name == name)){
         let update = automaticUpgrades.find(p => p.name == name)
         if (update.price > info[1].total){
-            window.alert(" you don't have enough for that.")
+            Toast.fire({icon:"warning", title:`Not enough eggs to buy ${update.name}`})
             return
         } 
         update.quantity += 1

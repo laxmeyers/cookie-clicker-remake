@@ -8,7 +8,7 @@ img:hover{
 }
 
 .height{
-    max-width: 50%;
+    width: 65%;
 }
 
 .background{
@@ -21,4 +21,8 @@ img:hover{
 
 .right-border{
     border: 10px double black;
+}
+
+.colored-toast.swal2-icon-warning{
+    background-color: red !important;
 }
