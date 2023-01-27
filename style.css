@@ -6,3 +6,7 @@ body{
 .height{
     max-width: 50%;
 }
+
+.background{
+    background-color: #00000075;
+}
