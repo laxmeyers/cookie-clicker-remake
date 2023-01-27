@@ -60,9 +60,14 @@ let clickUpgrades = [
     }
   ];
 
+  let clicks = 0
+  let eggs = 0
+
 //   SECTION functions
 
   function drawInfo(){
+    let eggElem = document.getElementById('total-eggs')
+    let clickElem = document.getElementById('total-clicks')
     let infoElem = document.getElementById('info')
     let template = ''
     let clickQuantity = 0
@@ -85,6 +90,8 @@ let clickUpgrades = [
     })
 
     infoElem.innerHTML = template
+    clickElem.innerText = clicks
+    eggElem.innerText = eggs
   }
 
   function drawUpgrades(){
@@ -142,8 +149,9 @@ let clickUpgrades = [
   function clickPower(){
     let moneyAdd = info[0]
     let currentMoney = info[1]
-
+    clicks += 1
     currentMoney.total += moneyAdd.total
+    eggs += moneyAdd.total 
     drawInfo()
   }
 
