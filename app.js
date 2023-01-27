@@ -1,3 +1,4 @@
+// SECTION arrays
 let info = [
     {
         name: 'click',
@@ -46,6 +47,7 @@ let clickUpgrades = [
     }
   ];
 
+//   SECTION functions
 
   function drawInfo(){
     let infoElem = document.getElementById('info')
@@ -60,7 +62,6 @@ let clickUpgrades = [
     infoElem.innerHTML = template
   }
 
-
   function drawUpgrades(){
     let clickElem = document.getElementById('click')
     let statsElem = document.getElementById('click-stats')
@@ -70,7 +71,7 @@ let clickUpgrades = [
     clickUpgrades.forEach(u => {
         upgrade += `
         <div class="col-12 my-2 d-flex justify-content-between align-items-center">
-        <button onclick="addClickUpgrade("${u.name}")" class="btn btn-success">${u.name} +${u.multiplier}</button>
+        <button onclick="addUpgrade('${u.name}')" class="btn btn-success">${u.name} +${u.multiplier}</button>
          $${u.price}
          </div>
          `
@@ -96,7 +97,7 @@ let clickUpgrades = [
     automaticUpgrades.forEach(a => {
         auto += `
         <div class="col-12 my-2 d-flex justify-content-between align-items-center">
-        <button onclick="addClickUpgrade("${a.name}")" class="btn btn-success">${a.name} +${a.multiplier}</button>
+        <button onclick="addUpgrade('${a.name}')" class="btn btn-success">${a.name} +${a.multiplier}</button>
          $${a.price}
          </div>
          `
@@ -114,7 +115,6 @@ let clickUpgrades = [
   }
 
   function clickPower(){
-    console.log(info[0])
     let moneyAdd = info[0]
     let currentMoney = info[1]
 
@@ -122,6 +122,14 @@ let clickUpgrades = [
     drawInfo()
   }
 
+  function addUpgrade(array){
+    console.log(array);
+
+    
+  }
+
+
+//   SECTION calling functions
   drawInfo()
   drawAuto()
   drawUpgrades()

@@ -3,6 +3,10 @@ body{
     background-size: cover;
 }
 
+img:hover{
+    cursor: grab;
+}
+
 .height{
     max-width: 50%;
 }
