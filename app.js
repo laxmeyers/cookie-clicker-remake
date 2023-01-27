@@ -1,11 +1,18 @@
-let click = [
+let info = [
     {
         name: 'click',
-        power: 1,
+        total: 1,
+        emoji: "👆"
+    },
+    {
+        name: 'cash',
+        total: 50000,
+        emoji: "$"
     },
     {
         name: 'auto',
-        power: 0
+        total: 0,
+        emoji: "⏲"
     }
 ]
 
@@ -38,6 +45,21 @@ let clickUpgrades = [
         multiplier: 50
     }
   ];
+
+
+  function drawInfo(){
+    let infoElem = document.getElementById('info')
+    let template = ''
+
+    info.forEach(p => {
+        template += `
+        <div class="col-2 bg-primary">${p.emoji}${p.total}</div>
+        `
+    })
+
+    infoElem.innerHTML = template
+  }
+
 
   function drawUpgrades(){
     let clickElem = document.getElementById('click')
@@ -95,5 +117,6 @@ let clickUpgrades = [
 
   }
 
+  drawInfo()
   drawAuto()
   drawUpgrades()
