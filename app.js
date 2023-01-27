@@ -114,7 +114,12 @@ let clickUpgrades = [
   }
 
   function clickPower(){
+    console.log(info[0])
+    let moneyAdd = info[0]
+    let currentMoney = info[1]
 
+    currentMoney.total += moneyAdd.total
+    drawInfo()
   }
 
   drawInfo()
