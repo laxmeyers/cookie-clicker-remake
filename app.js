@@ -20,7 +20,7 @@ let info = [
     },
     {
         name: 'cash',
-        total: 0,
+        total: 5,
         emoji: "🥚"
     },
     {
@@ -201,6 +201,8 @@ let clickUpgrades = [
     // console.log('hello')
     info[1].total += info[2].total
     drawInfo()
+    drawAuto()
+    drawUpgrades()
   }
 
   setInterval(autoClick, 3000)
